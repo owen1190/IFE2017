@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="echarts.common.min.js">
+    </script>
+</head>
+
+<body>
+    <div id="chart" style="width:600px;height:600px">
+
+    </div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('chart'));
+        var option = {
+            title: {
+                text: "柱状图",
+                subtext: "衣服销量",
+                left: "center",
+                textStyle: {
+                    fontSize: 28
+                }
+            },
+            grid: {
+                show: true
+            },
+            tooltip: {
+                trigger: 'item'
+            }, //提示框
+            legend: { //图例组件
+                data: ['销量'],
+                right: "right"
+            },
+            xAxis: { //x轴
+                name: "类名",
+                nameLocation: "start",
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+                type: 'category'
+            },
+            yAxis: {
+                // nameTextStyle: {
+                //     fontSize: 16
+                // },
+                // axisLine： {
+                //   show: true
+                // }
+            }, //y轴
+            toolbox: {
+                show: true,
+                orient: 'vertical'
+            },
+            series: [{
+                name: '销量',
+                type: 'bar', //图标类型
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        }
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

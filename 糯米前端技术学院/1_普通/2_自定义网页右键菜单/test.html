@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>自定义网页右键菜单</title>
+    <style>
+        #container {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+        }
+
+        #menu {
+            display: none;
+            z-index: 100;
+            position: absolute;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        window.onload = function() {
+            var menu = document.getElementById('menu');
+            var container = document.getElementById('container');
+            container.oncontextmenu = function(event) {
+                var event = event || window.event;
+                menu.style.display = "block";
+
+                /*获取当前鼠标右键按下后,距离container右边和底部的距离*/
+                var rightedge = container.clientWidth - event.clientX;
+                var bottomedge = container.clientHeight - event.clientY;
+
+                /*如果小于菜单的宽度，就定位菜单的左坐标（Left）为当前鼠标位置向左一个菜单宽度*/
+                if (rightedge < menu.offsetWidth)
+                    menu.style.left = event.clientX - menu.offsetWidth + "px";
+                else
+                    /*否则，就定位菜单的左坐标为当前鼠标位置*/
+                    menu.style.left = event.clientX + "px";
+
+                /*如果小于菜单的高度，就定位菜单的上坐标（Top）为当前鼠标位置向上一个菜单高度*/
+                if (bottomedge < menu.offsetHeight)
+                    menu.style.top = event.clientY - menu.offsetHeight + "px";
+                else
+                    /*否则，就定位菜单的上坐标为当前鼠标位置*/
+                    menu.style.top = event.clientY + "px";
+
+                return false;
+            };
+            document.onclick = function(evnet) {
+                menu.style.display = "none"
+            };
+
+        };
+    </script>
+    <div id="container">
+        <p>在框中点击鼠标右键查看上下文菜单</p>
+    </div>
+    <ul id="menu">
+        <li>Menu item 1</li>
+        <li>Menu item 2</li>
+        <li>Menu item 3</li>
+    </ul>
+</body>
+
+</html>
+
+</div>
+<ul id="menu">
+    <li>Menu item 1</li>
+    <li>Menu item 2</li>
+</ul>
+</body>
+
+</html>
