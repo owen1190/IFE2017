@@ -16,13 +16,14 @@
         var myChart = echarts.init(document.getElementById('chart'));
         var option = {
             title: {
-                text: "柱状图",
-                subtext: "衣服销量",
+                text: "What's my credit score?",
+                subtext: "Puerto Rico,% decrease on a year eariler",
                 left: "center",
                 textStyle: {
                     fontSize: 28
                 }
             },
+            backgroundColor: 'rgb(205,212,231)',
             grid: {
                 show: true
             },
@@ -30,31 +31,87 @@
                 trigger: 'item'
             }, //提示框
             legend: { //图例组件
-                data: ['销量'],
+                data: ['Population', 'GDP'],
                 right: "right"
             },
             xAxis: { //x轴
-                name: "类名",
-                nameLocation: "start",
-                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-                type: 'category'
+                position: "bottom",
+                scale: true,
+                nameTextStyle: {
+                    color: 'rgb(0,0,0)'
+                },
+                data: ["2006", "07", "08", "09", '10', '11', '12', '13', '14', '15'],
+                type: 'category',
+                axisLine: { //轴线设置
+                    lineStyle: {
+                        color: 'red',
+                        width: 3,
+                        type: 'solid'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['white'],
+                        width: 2
+                    }
+                },
+                axisTick: { //刻度线设置为不显示
+                    show: false
+                },
+                z: 10 //x轴为最上层
             },
             yAxis: {
-                // nameTextStyle: {
-                //     fontSize: 16
-                // },
-                // axisLine： {
-                //   show: true
-                // }
+                position: 'right',
+                inverse: true,
+                interval: 1,
+                min: 0,
+                max: 4,
+                type: "value",
+                axisLine: {
+                    show: false
+                }
             }, //y轴
             toolbox: {
                 show: true,
-                orient: 'vertical'
+                orient: 'horizontal'
             },
             series: [{
-                name: '销量',
                 type: 'bar', //图标类型
-                data: [5, 20, 36, 10, 10, 20]
+                name: "GDP",
+                data: [
+                    [0, 0.9],
+                    [1, 3.2],
+                    [2, 1.8],
+                    [3, 2.2],
+                    [4, 2.6],
+                    [5, 1.9],
+                    [6, 2.7],
+                    [7, 0.5],
+                    [8, 0.7],
+                    [9, 1.1]
+
+                ]
+            }, {
+                type: 'bar',
+                name: "Population",
+                barGap: 0,
+                label: {
+                    emphasis: {
+                        formatter: '{b}: {c}'
+                    }
+                },
+                data: [
+                    [0, 0.4],
+                    [1, 0.6],
+                    [2, 0.6],
+                    [3, 0.5],
+                    [4, 0.45],
+                    [5, 1.2],
+                    [6, 1.25],
+                    [7, 1.15],
+                    [8, 1.5],
+                    [9, 1.6]
+                ]
             }]
         }
         myChart.setOption(option);
