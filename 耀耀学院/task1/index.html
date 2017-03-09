@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        form {
+            margin: 200px;
+        }
+
+        label {
+            height: 50px;
+            font-size: 24px;
+            padding-right: 20px;
+        }
+
+        input {
+            border-color: #ccc;
+            width: 200px;
+            height: 40px;
+            font-size: 24px;
+        }
+
+        button {
+            padding-left: 10px;
+            width: 90px;
+            height: 40px;
+            background-color: rgb(7, 78, 184);
+            color: rgb(251, 251, 251);
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        div {
+            font-size: 20px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1">
+        <label for="name">名称: </label>
+        <input type="text" id="name" value="请输入名称">
+        <button type="button" id="submit">验证</button>
+        <div id="alert"></div>
+    </form>
+    <script type="text/javascript">
+        var input = document.getElementById('name');
+        var button = document.getElementById('submit');
+        var message = document.getElementById('alert');
+
+
+        input.addEventListener('focus', function(event) {
+                message.innerText = "必填，长度为4-16个字符";
+                message.style.color = '#ccc';
+            },
+            false);
+
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            var value = input.value;
+            var len = 0;
+            if (value == "") {
+                message.innerText = "姓名不能为空";
+                message.style.color = "rgb(209,0,21)";
+                input.style.border = "2px solid rgb(209,0,21)";
+            }
+
+            for (var i = 0; i < value.length; i++) {
+                var coding = value.charCodeAt(i);
+                if (coding > 0x00) {
+                    if (coding < 0xFF) {
+                        len++;
+                    } else {
+                        len += 2;
+                    }
+                } else {
+                    len += 2;
+                }
+            }
+            if (len >= 4 & len <= 16) {
+                message.innerText = "名称格式正确";
+                message.style.color = "rgb(110,182,74)";
+                input.style.border = "2px solid rgb(110,182,74)";
+            } else {
+                message.innerText = "名称格式不正确";
+                input.style.border = "2px solid rgb(209,0,21)";
+            }
+        }, false);
+    </script>
+</body>
+
+</html>
+
+</body>
+
+</html>
+
+</html>
