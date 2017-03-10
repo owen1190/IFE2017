@@ -67,28 +67,30 @@
                 message.innerText = "姓名不能为空";
                 message.style.color = "rgb(209,0,21)";
                 input.style.border = "2px solid rgb(209,0,21)";
-            }
-
-            for (var i = 0; i < value.length; i++) {
-                var coding = value.charCodeAt(i);
-                if (coding > 0x00) {
-                    if (coding < 0xFF) {
-                        len++;
+            } else {
+                for (var i = 0; i < value.length; i++) {
+                    var coding = value.charCodeAt(i);
+                    if (coding > 0x00) {
+                        if (coding < 0xFF) {
+                            len++;
+                        } else {
+                            len += 2;
+                        }
                     } else {
                         len += 2;
                     }
+                }
+                if (len >= 4 & len <= 16) {
+                    message.innerText = "名称格式正确";
+                    message.style.color = "rgb(110,182,74)";
+                    input.style.border = "2px solid rgb(110,182,74)";
                 } else {
-                    len += 2;
+                    message.innerText = "名称格式不正确";
+                    message.style.color = "rgb(209,0,21)";
+                    input.style.border = "2px solid rgb(209,0,21)";
                 }
             }
-            if (len >= 4 & len <= 16) {
-                message.innerText = "名称格式正确";
-                message.style.color = "rgb(110,182,74)";
-                input.style.border = "2px solid rgb(110,182,74)";
-            } else {
-                message.innerText = "名称格式不正确";
-                input.style.border = "2px solid rgb(209,0,21)";
-            }
+
         }, false);
     </script>
 </body>
