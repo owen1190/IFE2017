@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        form {
+            margin: 200px;
+        }
+        
+        label {
+            height: 50px;
+            font-size: 24px;
+            padding-right: 20px;
+            text-align: right;
+        }
+
+        input {
+            border-color: #ccc;
+            width: 200px;
+            height: 40px;
+            font-size: 24px;
+        }
+
+        button {
+            padding-left: 10px;
+            width: 90px;
+            height: 40px;
+            background-color: rgb(7, 78, 184);
+            color: rgb(251, 251, 251);
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form">
+        <label for="name">名称</label>
+        <input type="text" id="name">
+        <p id="hint1"></p>
+
+        <label for="password">密码</label>
+        <input type="password" id="password">
+        <p id="hint2"></p>
+
+        <label for="reconfirm">密码确认</label>
+        <input type="password" id="reconfirm">
+        <p id="hint3"></p>
+
+        <label for="mail">邮箱地址</label>
+        <input type="text" id="mail">
+        <p id="hint4"></p>
+
+        <label for="phone">手机号</label>
+        <input type="text" id="phone">
+        <p id="hint5"></p>
+
+        <button id="submit" type="button" name="button">提交</button>
+    </form>
+    <script type="text/javascript" src="index.js">
+    </script>
+</body>
+
+</html>
