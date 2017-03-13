@@ -3,6 +3,7 @@
 1. 体会数据的封装
 2. 快速学习新工具的的能力
 3. 熟悉phantomjs的基础用法
+
 ## 任务描述
 1. 安装phantomjs2.0，并查看webpage相关的API http://phantomjs.org/api/webpage/。
 2. 编写一个task.js脚本，参考官网的includeJs方法，实现根据传入的参数（关键字），抓取百度第一页对应该关键字的搜索结果。
