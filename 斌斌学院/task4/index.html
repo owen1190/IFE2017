@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        #container {
+            margin: 20px;
+        }
+
+        #container>div {
+            display: inline;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 40px;
+            background-color: red;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" name="" value="">
+    <button type="button" name="button">左侧入</button>
+    <button type="button" name="button">右侧人</button>
+    <button type="button" name="button">左侧出</button>
+    <button type="button" name="button">右侧出</button>
+    <div id="container">
+
+    </div>
+    <script type="text/javascript">
+        var input = document.getElementsByTagName('input')[0];
+        var button = document.getElementsByTagName("button");
+        var container = document.getElementById('container');
+        button[0].addEventListener('click', function() {
+            // insertAdjacentElement() 方法将一个指定的元素插入到一个相对于被调用元素的一个指定位置。
+            var div = document.createElement('div');
+            div.innerText = input.value;
+            container.insertAdjacentElement("afterbegin", div);
+        }, false);
+        button[1].addEventListener('click', function() {
+            var div = document.createElement('div');
+            div.innerText = input.value;
+            container.insertAdjacentElement("beforeend", div);
+        }, false);
+        button[2].addEventListener('click', function() {
+            var value = container.firstChild.innerText;
+            container.removeChild(container.firstChild);
+            alert("左侧出" + value);
+        });
+        button[3].addEventListener('click', function() {
+            var value = container.lastChild.innerText;
+            container.removeChild(container.lastChild);
+            alert("右侧出" + value);
+        });
+    </script>
+</body>
+
+</html>
