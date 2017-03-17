@@ -100,14 +100,19 @@
         });
         button[4].addEventListener('click', function() {
             var arr = container.childNodes;
-            var len = arr.length
-            for (var i = len; i >= 2; i--) {
-                for (var j = 0; j < i - 1; j++) {
-                    if (arr[j + 1].innerText < arr[j].innerText) {
-                        container.insertBefore(arr[j + 1], arr[j]);
+            var len = arr.length;
+            for (var i = 0; i < len-1; i++) {
+                for (var j = i+1; j < len; j++) {
+                    if (arr[i].innerText > arr[j].innerText ) {
+                        container.insertBefore(arr[j], arr[i]);
+                        // setTimeout(function () {
+                        //   var container = document.getElementById('container');
+                        //   container.insertBefore(arr[j], arr[i]);
+                        // },500);
                     }
                 }
             }
+
         });
     </script>
 </body>
