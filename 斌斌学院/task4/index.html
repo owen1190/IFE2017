@@ -5,6 +5,24 @@
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
+        body {
+            margin-left: 40%;
+            margin-top: 10%;
+        }
+
+        input {
+            height: 40px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+
+        button {
+            height: 40px;
+            margin: 5px;
+            font-size: 20px;
+            box-sizing: border-box;
+        }
+
         #container {
             margin: 20px;
         }
@@ -22,7 +40,7 @@
 </head>
 
 <body>
-    <input type="number" name="" value="">
+    <input type="number" value="请输入数字">
     <button type="button" name="button">左侧入</button>
     <button type="button" name="button">右侧人</button>
     <button type="button" name="button">左侧出</button>
@@ -45,15 +63,22 @@
             div.innerText = input.value;
             container.insertAdjacentElement("beforeend", div);
         }, false);
+        //左侧出
         button[2].addEventListener('click', function() {
             var value = container.firstChild.innerText;
             container.removeChild(container.firstChild);
             alert("左侧出" + value);
         });
+        //右侧出
         button[3].addEventListener('click', function() {
             var value = container.lastChild.innerText;
             container.removeChild(container.lastChild);
             alert("右侧出" + value);
+        });
+
+        container.addEventListener('click', function(event) {
+            var target = event.target; //获取点击的元素
+            container.removeChild(target);
         });
     </script>
 </body>
