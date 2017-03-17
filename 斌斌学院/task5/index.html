@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        body {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        input {
+            height: 40px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+
+        button {
+            height: 40px;
+            margin: 5px;
+            font-size: 20px;
+            box-sizing: border-box;
+        }
+
+        #container {
+            margin: 20px;
+        }
+
+        #container>div {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+            vertical-align: bottom;
+            font-size: 10px;
+            background-color: red;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" max="100" min="10">
+    <button type="button" name="button">左侧入</button>
+    <button type="button" name="button">右侧入</button>
+    <button type="button" name="button">左侧出</button>
+    <button type="button" name="button">右侧出</button>
+    <button type="button" name="button">排序</button>
+    <div id="container">
+
+    </div>
+    <script type="text/javascript">
+        var input = document.getElementsByTagName('input')[0];
+        var button = document.getElementsByTagName("button");
+        var container = document.getElementById('container');
+        var count = 0;
+        button[0].addEventListener('click', function() {
+            //insertAdjacentElement() 方法将一个指定的元素插入到一个相对于被调用元素的一个指定位置。
+            if (input.value < 10 || input.value > 100) {
+                alert("请输入10-100之间的数字")
+            } else if (count <= 60) {
+                var div = document.createElement('div');
+                div.style.height = input.value * 5 + 'px';
+                div.innerText = input.value;
+                container.insertAdjacentElement("afterbegin", div);
+                count++;
+            } else {
+                alert('超出限制60个');
+            }
+        }, false);
+        button[1].addEventListener('click', function() {
+            if (input.value < 10 || input.value > 100) {
+                alert("请输入10-100之间的数字")
+            } else if (count <= 60) {
+                var div = document.createElement('div');
+                div.style.height = input.value * 5 + 'px';
+                div.innerText = input.value;
+                container.insertAdjacentElement("beforeend", div);
+                count++;
+            } else {
+                alert('超出限制60个');
+            }
+        }, false);
+        //左侧出
+        button[2].addEventListener('click', function() {
+            var value = container.firstChild.innerText;
+            container.removeChild(container.firstChild);
+            alert("左侧出" + value);
+        });
+        //右侧出
+        button[3].addEventListener('click', function() {
+            var value = container.lastChild.innerText;
+            container.removeChild(container.lastChild);
+            alert("右侧出" + value);
+        });
+
+        container.addEventListener('click', function(event) {
+            var target = event.target; //获取点击的元素
+            container.removeChild(target);
+        });
+        button[4].addEventListener('click', function() {
+            var arr = container.childNodes;
+            var len = arr.length
+            for (var i = len; i >= 2; i--) {
+                for (var j = 0; j < i - 1; j++) {
+                    if (arr[j + 1].innerText < arr[j].innerText) {
+                        container.insertBefore(arr[j + 1], arr[j]);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
