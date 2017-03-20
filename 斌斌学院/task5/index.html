@@ -99,21 +99,38 @@
             container.removeChild(target);
         });
         button[4].addEventListener('click', function() {
+            // var timer;
             var arr = container.childNodes;
-            var len = arr.length;
-            for (var i = 0; i < len-1; i++) {
-                for (var j = i+1; j < len; j++) {
-                    if (arr[i].innerText > arr[j].innerText ) {
-                        container.insertBefore(arr[j], arr[i]);
-                        // setTimeout(function () {
-                        //   var container = document.getElementById('container');
-                        //   container.insertBefore(arr[j], arr[i]);
-                        // },500);
+            // var arr = c
+            var len = arr.length,
+                i = 0,
+                j = 1,
+                timer;
+            timer = setInterval(function() {
+                if (i < len) {
+                    if (j < len) {
+                        if (arr[i].innerText > arr[j].innerText) {
+                            var tmp = arr[j].innerText;
+                            arr[j].innerText = arr[i].innerText;
+                            arr[j].style.height = arr[i].innerText * 5 + "px";
+                            arr[i].innerText = tmp;
+                            arr[i].style.height = tmp * 5 + "px";
+                            arr[i].style.backgroundColor = "green";
+                            arr[j].style.backgroundColor = "green";
+                        }
+                        ++j;
+                    } else {
+                        i++;
+                        j = i + 1;
                     }
+                } else {
+                    clearInterval(timer);
+                    return;
                 }
-            }
+            }, 100);
 
-        });
+
+        }, false);
     </script>
 </body>
 
