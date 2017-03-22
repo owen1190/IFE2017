@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="task.js">
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <p>姓名：{{user.name}}</p>
+        <p>年龄：{{user.age}}</p>
+    </div>
+    <script type="text/javascript">
+        var selector = "app";
+        var data = {
+            user: {
+                name: 'youngwind',
+                age: 25
+            }
+        };
+        compile(selector, data);
+    </script>
+</body>
+
+</html>
