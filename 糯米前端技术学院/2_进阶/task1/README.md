@@ -24,6 +24,6 @@
 ### 文字颜色的流光渐变效果
 首先通过`-webkit-background-clip:text;-webkit-text-fill-color:transparent;`将文字镂空，以`background-image:-webkit-linear-gradient()`背景颜色渐变，最后使用`@keyframes`来进行背景平移的无限循环以模仿流动。
 ### 按钮边框的中间向两端扩展效果
-
+这个效果主要使用了伪元素`::before`、`::after`来实现容器的边框，`::before`设置容器的左右边框，`::after`设置容器的上下边框，伪元素边框使用绝对定位，`figure`使用相对定位，伪元素边框位置分别定位到相对父元素的`top`和`left`的50%，通过改变其位置和宽高来实现边框从中间到两边扩展的动画效果。
 ### 背景的模糊效果
 在背景所在的元素上使用伪元素，使伪元素宽高、位置完全与背景所在元素相同，再将元素背景设置为伪元素的背景，对伪元素使用“filter:blur()”即可

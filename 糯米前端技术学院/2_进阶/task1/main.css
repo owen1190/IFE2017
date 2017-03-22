@@ -45,6 +45,7 @@ div>a{
     background-image:-webkit-linear-gradient(left,red,green 25%,yellow 50%,green 75%,red 100%);
     background-size:200% 100%;
 }
+/*流光渐变动画*/
 @keyframes gradient{
     from{background-position:0% 0%;}
     to{background-position:-100% 0%;}
