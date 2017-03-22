@@ -27,3 +27,10 @@ let app = new Vue({
 </div>
 ```
 此题尚未要求实现动态数据绑定
+## 知识点
+### document.createDocumentFragment()
+`document.createDocumentFragment()`创造出的fragment，在文档中没有对应的标记，可以包含和控制节点。
+### 思路
+从所给选择器的元素开始，创造出相同的结构及元素，但是只在`{{user.name}}`中使用正则表达式更改，然后将这些赋给fragement，最后替代原有的dom结构即可。
+
+要注意开始创造dom结构时，判断每个节点的类型，元素节点需要检查其属性及其子节点，子节点需要判断并递归调用。文本节点需判断其中是否有所要更改格式。
