@@ -1,18 +1,38 @@
-div.row{
-  width: 200px;
-  margin-left: auto;
-  margin-right: auto;
+.singer{
+  opacity: 0.8
 }
-div.timeline {
-  width: 100%;
-  height: 10px;
-  border: 1px solid black;
-  background-color: grey;
+div.progress{
+  margin-top: 10px;
 }
-div.big {
-  width: 100px;
-  height: 100px;
+
+div.control>h2 {
+  margin-bottom: 100px;
 }
-div.conver>img{
-  
+div.small>div>span.glyphicon {
+  opacity: 0.5;
+  font-size: 1.2em;
+}
+div.big>div>span.glyphicon{
+  font-size: 1.8em;
+}
+
+@keyframes rot {
+  from {
+    transform: rotate(0deg);
+
+  }
+
+  to {
+    transform: rotate(360deg);
+
+  }
+}
+
+img.img-circle{
+  /*animation-name: rot;*/
+  position: relative;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
 }
