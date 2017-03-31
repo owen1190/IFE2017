@@ -58,6 +58,9 @@ $('#player').on('timeupdate', function() {
     $('#timeline>div.progress-bar').css('width', function() {
         return player.currentTime / player.duration * 100 + "%";
     })
+    if (player.currentTime == player.duration) {
+        player.pause();
+    }
 })
 
 /**
@@ -137,4 +140,36 @@ $('.glyphicon-step-forward').click(function() {
     if (!status) {
         player.play();
     }
+})
+/**
+ * 歌曲循环，随机播放
+ */
+$('#player').on('ended', function() {
+    if (mode == "loop") {
+        $('#player').append($('#player source:first-child'));
+    } else {
+        var n = Math.floor(Math.random() * ($('#player source').length - 1)) + 2;
+        $('#player').prepend($('#player source:nth-child(' + n + ')'));
+    }
+    player.load();
+    player.play();
+
+})
+var mode;
+$('.glyphicon-retweet').click(function() {
+    if (i % 2 == 0) {
+        i++;
+        $(this).attr('class', 'glyphicon glyphicon-random');
+        mode = "random"
+    } else {
+
+        i++;
+        $(this).attr('class', 'glyphicon glyphicon-retweet');
+        mode = "loop"
+    }
+
+    if ($('.glyphicon-pause').hasClass('glyphicon glyphicon-pause')) {
+        player.play();
+    }
+
 })
