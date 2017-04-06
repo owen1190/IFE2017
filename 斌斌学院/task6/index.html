@@ -3,8 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      .container > .select {
+        background-color:red;
+      }
+    </style>
   </head>
   <body>
-    <textarea name="name" rows="8" cols="80"></textarea>
+    <textarea class="inputValue" name="name" rows="8" cols="80"></textarea>
+    <input  class="findValue" type="text" name="" value="">
+    <button type="button" name="button" class="insert">插入</button>
+    <button type="button" name="button">查找</button>
+    <div class="container">
+
+    </div>
+    <script type="text/javascript">
+      var inputValue = document.getElementsByClassName('inputValue')[0];
+      var findValue = document.getElementsByClassName('findValue')[0];
+
+      var insert = document.getElementsByTagName('button')[0];
+      var find = document.getElementsByTagName('button')[1];
+      var container = document.getElementsByClassName('container')[0];
+      insert.addEventListener('click', function(e) {
+        var value= inputValue.value;
+        var arr= value.split(/[^a-zA-Z0-9u4e00-\u9fa5]/);
+        var str=""
+        arr.forEach(function(a) {
+          str+=a;
+        });
+        container.innerHTML = str;
+      });
+      find.addEventListener('click', function(e) {
+        var str = new RegExp(findValue.value,'g');
+        var text = container.innerHTML;
+        container.innerHTML = text.replace(str,'<span class="select">'+findValue.value+'</span>');
+      });
+    </script>
   </body>
 </html>
